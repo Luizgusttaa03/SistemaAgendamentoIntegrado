@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "framework": null,
-  "buildCommand": "npm run vercel-build",
-  "installCommand": "npm install",
   "functions": {
     "api/index.js": {
       "maxDuration": 30
@@ -13,8 +10,5 @@
       "src": "/(.*)",
       "dest": "api/index.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
