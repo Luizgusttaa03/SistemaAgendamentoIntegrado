@@ -11,7 +11,6 @@ test/
 coverage/
 
 # Development files
-src/
 *.md
 .env
 .env.local
@@ -27,9 +26,6 @@ src/
 .DS_Store
 Thumbs.db
 
-# Build tools
+# Build tools - keeping necessary files for build
 .eslintrc.js
 .prettierrc
-nest-cli.json
-tsconfig.json
-tsconfig.build.json
