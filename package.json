@@ -13,6 +13,8 @@
     "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/main.ts",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "start:server": "npm run build && npm run start:prod",
+    "deploy": "npx prisma migrate deploy && npm run start:server",
     "vercel-build": "npx prisma generate && npm run build:tsc",
     "postinstall": "npx prisma generate",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
