@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const barbeiro_service_1 = require("./barbeiro.service");
 const create_barbeiro_dto_1 = require("./dto/create-barbeiro.dto");
 const update_barbeiro_dto_1 = require("./dto/update-barbeiro.dto");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let BarbeiroController = class BarbeiroController {
     barbeiroService;
     constructor(barbeiroService) {
@@ -41,6 +42,7 @@ let BarbeiroController = class BarbeiroController {
 exports.BarbeiroController = BarbeiroController;
 __decorate([
     (0, common_1.Post)(),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -56,6 +58,7 @@ __decorate([
 ], BarbeiroController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -64,6 +67,7 @@ __decorate([
 ], BarbeiroController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Put)(':id'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -73,6 +77,7 @@ __decorate([
 ], BarbeiroController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

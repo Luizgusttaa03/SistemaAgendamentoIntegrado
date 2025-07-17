@@ -13,16 +13,23 @@ exports.CreateAgendamentoDto = void 0;
 const class_validator_1 = require("class-validator");
 class CreateAgendamentoDto {
     clienteId;
+    clienteNome;
     barbeiroId;
     servicoId;
-    dataAgendamento;
+    data;
+    hora;
 }
 exports.CreateAgendamentoDto = CreateAgendamentoDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateAgendamentoDto.prototype, "clienteId", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateAgendamentoDto.prototype, "clienteNome", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -30,11 +37,16 @@ __decorate([
 ], CreateAgendamentoDto.prototype, "barbeiroId", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateAgendamentoDto.prototype, "servicoId", void 0);
 __decorate([
     (0, class_validator_1.IsDateString)({}, { message: 'Data do agendamento deve ser uma data válida' }),
     __metadata("design:type", String)
-], CreateAgendamentoDto.prototype, "dataAgendamento", void 0);
+], CreateAgendamentoDto.prototype, "data", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateAgendamentoDto.prototype, "hora", void 0);
 //# sourceMappingURL=create-agendamento.dto.js.map

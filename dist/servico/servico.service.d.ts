@@ -23,7 +23,7 @@ export declare class ServicoService {
                 criadoEm: Date;
                 nome: string;
                 telefone: string;
-            };
+            } | null;
             barbeiro: {
                 id: string;
                 criadoEm: Date;
@@ -32,10 +32,13 @@ export declare class ServicoService {
         } & {
             id: string;
             criadoEm: Date;
-            clienteId: string;
+            data: Date;
+            clienteId: string | null;
+            clienteNome: string;
             barbeiroId: string;
-            servicoId: string;
-            dataAgendamento: Date;
+            servicoId: string | null;
+            hora: string;
+            dataAgendamento: Date | null;
         })[];
     } & {
         id: string;

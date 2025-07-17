@@ -28,14 +28,17 @@ export declare class ClienteService {
                 nome: string;
                 duracaoMinutos: number;
                 preco: number;
-            };
+            } | null;
         } & {
             id: string;
             criadoEm: Date;
-            clienteId: string;
+            data: Date;
+            clienteId: string | null;
+            clienteNome: string;
             barbeiroId: string;
-            servicoId: string;
-            dataAgendamento: Date;
+            servicoId: string | null;
+            hora: string;
+            dataAgendamento: Date | null;
         })[];
     } & {
         id: string;

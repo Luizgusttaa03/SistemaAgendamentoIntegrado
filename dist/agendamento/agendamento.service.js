@@ -19,12 +19,14 @@ let AgendamentoService = class AgendamentoService {
     }
     async create(createAgendamentoDto) {
         try {
-            const { clienteId, barbeiroId, servicoId, dataAgendamento } = createAgendamentoDto;
-            const cliente = await this.prisma.cliente.findUnique({
-                where: { id: clienteId },
-            });
-            if (!cliente) {
-                throw new common_1.NotFoundException(`Cliente com ID ${clienteId} não encontrado`);
+            const { clienteId, clienteNome, barbeiroId, servicoId, data, hora } = createAgendamentoDto;
+            if (clienteId) {
+                const cliente = await this.prisma.cliente.findUnique({
+                    where: { id: clienteId },
+                });
+                if (!cliente) {
+                    throw new common_1.NotFoundException(`Cliente com ID ${clienteId} não encontrado`);
+                }
             }
             const barbeiro = await this.prisma.barbeiro.findUnique({
                 where: { id: barbeiroId },
@@ -32,29 +34,40 @@ let AgendamentoService = class AgendamentoService {
             if (!barbeiro) {
                 throw new common_1.NotFoundException(`Barbeiro com ID ${barbeiroId} não encontrado`);
             }
-            const servico = await this.prisma.servico.findUnique({
-                where: { id: servicoId },
-            });
-            if (!servico) {
-                throw new common_1.NotFoundException(`Serviço com ID ${servicoId} não encontrado`);
+            if (servicoId) {
+                const servico = await this.prisma.servico.findUnique({
+                    where: { id: servicoId },
+                });
+                if (!servico) {
+                    throw new common_1.NotFoundException(`Serviço com ID ${servicoId} não encontrado`);
+                }
             }
-            const dataAgendamentoDate = new Date(dataAgendamento);
+            const dataAgendamento = new Date(data);
             const agendamentoExistente = await this.prisma.agendamento.findFirst({
                 where: {
                     barbeiroId,
-                    dataAgendamento: dataAgendamentoDate,
+                    data: dataAgendamento,
+                    hora,
                 },
             });
             if (agendamentoExistente) {
                 throw new common_1.ConflictException('Horário já está ocupado para este barbeiro');
             }
+            const agendamentoData = {
+                clienteNome,
+                barbeiroId,
+                data: dataAgendamento,
+                hora,
+                dataAgendamento,
+            };
+            if (clienteId) {
+                agendamentoData.clienteId = clienteId;
+            }
+            if (servicoId) {
+                agendamentoData.servicoId = servicoId;
+            }
             return await this.prisma.agendamento.create({
-                data: {
-                    clienteId,
-                    barbeiroId,
-                    servicoId,
-                    dataAgendamento: dataAgendamentoDate,
-                },
+                data: agendamentoData,
                 include: {
                     cliente: true,
                     barbeiro: true,
@@ -63,7 +76,8 @@ let AgendamentoService = class AgendamentoService {
             });
         }
         catch (error) {
-            if (error instanceof common_1.NotFoundException || error instanceof common_1.ConflictException) {
+            if (error instanceof common_1.NotFoundException ||
+                error instanceof common_1.ConflictException) {
                 throw error;
             }
             throw new common_1.BadRequestException('Erro ao criar agendamento');

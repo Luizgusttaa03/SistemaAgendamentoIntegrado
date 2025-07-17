@@ -10,7 +10,7 @@ export declare class AgendamentoService {
             criadoEm: Date;
             nome: string;
             telefone: string;
-        };
+        } | null;
         barbeiro: {
             id: string;
             criadoEm: Date;
@@ -21,14 +21,17 @@ export declare class AgendamentoService {
             nome: string;
             duracaoMinutos: number;
             preco: number;
-        };
+        } | null;
     } & {
         id: string;
         criadoEm: Date;
-        clienteId: string;
+        data: Date;
+        clienteId: string | null;
+        clienteNome: string;
         barbeiroId: string;
-        servicoId: string;
-        dataAgendamento: Date;
+        servicoId: string | null;
+        hora: string;
+        dataAgendamento: Date | null;
     }>;
     findAll(): Promise<({
         cliente: {
@@ -36,7 +39,7 @@ export declare class AgendamentoService {
             criadoEm: Date;
             nome: string;
             telefone: string;
-        };
+        } | null;
         barbeiro: {
             id: string;
             criadoEm: Date;
@@ -47,14 +50,17 @@ export declare class AgendamentoService {
             nome: string;
             duracaoMinutos: number;
             preco: number;
-        };
+        } | null;
     } & {
         id: string;
         criadoEm: Date;
-        clienteId: string;
+        data: Date;
+        clienteId: string | null;
+        clienteNome: string;
         barbeiroId: string;
-        servicoId: string;
-        dataAgendamento: Date;
+        servicoId: string | null;
+        hora: string;
+        dataAgendamento: Date | null;
     })[]>;
     findByCliente(clienteId: string): Promise<({
         cliente: {
@@ -62,7 +68,7 @@ export declare class AgendamentoService {
             criadoEm: Date;
             nome: string;
             telefone: string;
-        };
+        } | null;
         barbeiro: {
             id: string;
             criadoEm: Date;
@@ -73,14 +79,17 @@ export declare class AgendamentoService {
             nome: string;
             duracaoMinutos: number;
             preco: number;
-        };
+        } | null;
     } & {
         id: string;
         criadoEm: Date;
-        clienteId: string;
+        data: Date;
+        clienteId: string | null;
+        clienteNome: string;
         barbeiroId: string;
-        servicoId: string;
-        dataAgendamento: Date;
+        servicoId: string | null;
+        hora: string;
+        dataAgendamento: Date | null;
     })[]>;
     findByBarbeiro(barbeiroId: string): Promise<({
         cliente: {
@@ -88,7 +97,7 @@ export declare class AgendamentoService {
             criadoEm: Date;
             nome: string;
             telefone: string;
-        };
+        } | null;
         barbeiro: {
             id: string;
             criadoEm: Date;
@@ -99,14 +108,17 @@ export declare class AgendamentoService {
             nome: string;
             duracaoMinutos: number;
             preco: number;
-        };
+        } | null;
     } & {
         id: string;
         criadoEm: Date;
-        clienteId: string;
+        data: Date;
+        clienteId: string | null;
+        clienteNome: string;
         barbeiroId: string;
-        servicoId: string;
-        dataAgendamento: Date;
+        servicoId: string | null;
+        hora: string;
+        dataAgendamento: Date | null;
     })[]>;
     findOne(id: string): Promise<{
         cliente: {
@@ -114,7 +126,7 @@ export declare class AgendamentoService {
             criadoEm: Date;
             nome: string;
             telefone: string;
-        };
+        } | null;
         barbeiro: {
             id: string;
             criadoEm: Date;
@@ -125,14 +137,17 @@ export declare class AgendamentoService {
             nome: string;
             duracaoMinutos: number;
             preco: number;
-        };
+        } | null;
     } & {
         id: string;
         criadoEm: Date;
-        clienteId: string;
+        data: Date;
+        clienteId: string | null;
+        clienteNome: string;
         barbeiroId: string;
-        servicoId: string;
-        dataAgendamento: Date;
+        servicoId: string | null;
+        hora: string;
+        dataAgendamento: Date | null;
     }>;
     update(id: string, updateAgendamentoDto: UpdateAgendamentoDto): Promise<{
         cliente: {
@@ -140,7 +155,7 @@ export declare class AgendamentoService {
             criadoEm: Date;
             nome: string;
             telefone: string;
-        };
+        } | null;
         barbeiro: {
             id: string;
             criadoEm: Date;
@@ -151,14 +166,17 @@ export declare class AgendamentoService {
             nome: string;
             duracaoMinutos: number;
             preco: number;
-        };
+        } | null;
     } & {
         id: string;
         criadoEm: Date;
-        clienteId: string;
+        data: Date;
+        clienteId: string | null;
+        clienteNome: string;
         barbeiroId: string;
-        servicoId: string;
-        dataAgendamento: Date;
+        servicoId: string | null;
+        hora: string;
+        dataAgendamento: Date | null;
     }>;
     remove(id: string): Promise<{
         message: string;
